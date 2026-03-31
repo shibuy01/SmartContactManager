@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+
+<body th:replace="~{normal/base::layout(~{::section})}">
+
+<section>
+   <div class="container mt-1">
+        <div class="card shadow p-3">
+
+            <h3 class="text-center mb-3">Update Your Contact</h3>
+            
+            <!-- 🔥 MESSAGE SHOW -->
+            <div th:if="${message}" 
+			     th:class="'alert alert-' + ${message.type}">
+			    
+			    <span th:text="${message.content}"></span>
+			</div>
+
+            <!-- message remove -->
+            
+
+            <form th:action="@{/user/process-update}" 
+                  th:object="${contact}"
+                  enctype="multipart/form-data"
+                  method="POST">
+                  
+
+                <!-- Name -->
+                <div class="input-group mt-2">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-user"></i>
+                    </span>
+                    <input type="text" th:field="*{name}" 
+                           placeholder="Enter Name here.." 
+                           class="form-control" required  th:value="${contact.name}"/>
+                </div>
+
+                <!-- Second Name -->
+                <div class="input-group mt-2">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-id-card"></i>
+                    </span>
+                    <input type="text" th:field="*{secondName}" 
+                           placeholder="Enter Nick Name here.." 
+                           class="form-control" />
+                </div>
+                
+                <!-- Work -->
+                <div class="input-group mt-2">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-briefcase"></i>
+                    </span>
+                    <input type="text" th:field="*{work}" 
+                           placeholder="Enter Work here.." 
+                           class="form-control" />
+                </div>
+                
+                <!-- Email -->
+                <div class="input-group mt-2">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-envelope"></i>
+                    </span>
+                    <input type="email" th:field="*{email}" 
+                           placeholder="Enter Email here.." 
+                           class="form-control" />
+                </div>
+                
+                <!-- Phone -->
+                <div class="input-group mt-2">
+                    <span class="input-group-text">
+                        <i class="fa-solid fa-phone"></i>
+                    </span>
+                    <input type="text" th:field="*{phone}" 
+                           placeholder="Enter Phone Number here.." 
+                           class="form-control" />
+                </div>
+                
+                <!-- Description -->
+                <div class="mt-2">
+                    <textarea th:field="*{description}" 
+                              class="form-control" 
+                              placeholder="Enter Description.." 
+                              rows="3"></textarea>
+                </div>
+
+                <!-- Image -->
+                <div class="mt-2">
+                    <input type="file" name="profileImage" class="form-control" />
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center mt-3">
+                    <button class="btn btn-primary">
+                        Update Contact
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+    
+</section>
+
+</body>
+</html>

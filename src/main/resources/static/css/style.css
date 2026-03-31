@@ -24,7 +24,7 @@ body{
 }
 
 .my-card{
-	
+	padding:20px;
 	background: #FFFFFF;
 	opacity: 0.8;
 	background: linear-gradient(to right, #FFFFFF, #e3f2fd);

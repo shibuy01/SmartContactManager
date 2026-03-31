@@ -40,7 +40,7 @@
     	<a href="#"  th:href="@{/user/index}" class="item"> <i class="fa-solid fa-house"></i> Home</a>
     	<a href="#" th:href="@{/user/show-contact/0}" class="item"> <i class="fa-regular fa-eye"></i> View Contact</a>
     	<a href="#" th:href="@{/user/add-contact}" class="item"> <i class="fa-solid fa-person-circle-plus"></i> Add Contact</a>
-    	<a href="#" class="item"><i class="fa-solid fa-circle-user"></i> Your Profile</a>
+    	<a href="#" th:href="@{/user/profile}" class="item"><i class="fa-solid fa-circle-user"></i> Your Profile</a>
     	<a href="#" class="item"> <i class="fa-solid fa-wrench"></i> Settings</a>
     	<a href="#" th:href="@{/logout}" class="item"> <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</a>
     	<div class="divider"></div>
@@ -59,6 +59,32 @@
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script>
+	function deleteContact(cId) {
+		 
+		    Swal.fire({
+		        title: "Are you sure?",
+		        text: "You want to delete this contact!",
+		        icon: "warning",
+		        showCancelButton: true,
+		        confirmButtonColor: "#3085d6",
+		        cancelButtonColor: "#d33",
+		        confirmButtonText: "Yes, delete it!"
+		    }).then((result) => {
+		
+		        if (result.isConfirmed) {
+		            // 👉 yaha redirect hoga controller pe
+		            window.location.href = "/user/delete/" + cId;
+		        } else {
+		            Swal.fire("Cancelled", "Your contact is safe :)", "info");
+		        }
+		
+		    });
+		}
+	</script>
+    
     <script th:src="@{/js/script.js}"></script>
 
 </body>

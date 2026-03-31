@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,8 @@ import com.example.demo.dao.UserRepository;
 import com.example.demo.entity.Contact;
 import com.example.demo.entity.User;
 import com.example.demo.helper.Message;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -136,8 +139,102 @@ public class UserController {
     }
     
     @GetMapping("/contact/{cId}")
-    public String showContactDetail(@PathVariable("cId") Integer cId) {
+    public String showContactDetail(@PathVariable("cId") Integer cId,Model m, Principal principal) {
+    	
+    	m.addAttribute("title", "Show Contact Details - Smart Contact Manager");
+    	
+    	Optional<Contact> contactOptional = this.contactRepository.findById(cId);
+    	Contact contact = contactOptional.get();
+    	
+    	String userName = principal.getName();
+    	User user = this.userRepository.getUserByEmail(userName);
+    	
+    	if(user.getId() == contact.getUser().getId()) {
+    		m.addAttribute("contact", contact);
+    	}
     	
     	return"normal/contact_detail";
     }
+    
+    @GetMapping("/delete/{cId}")
+    public String deleteContact(@PathVariable("cId") Integer cId , HttpSession session) {
+    	
+    	Optional<Contact> contactOptional = this.contactRepository.findById(cId);
+    	Contact contact = contactOptional.get();
+    	
+    	contact.setUser(null);
+    	
+    	this.contactRepository.delete(contact);
+    	session.setAttribute("Contact deleted successfully...", "success");
+    	
+    	return "redirect:/user/show-contact/0";
+    }
+    
+    @PostMapping("/update-contact/{cId}")
+    public String updateContact(@PathVariable("cId") Integer cId, Model m) {
+    	
+    	m.addAttribute("title", "Update Contact Details - Smart Contact Manager");
+    	
+    	Contact contact = this.contactRepository.findById(cId).get();
+    	
+    	m.addAttribute("contact",contact);
+    	
+    	return"normal/update_form";
+    }
+    
+    @PostMapping("/process-update")
+    public String updateHandler(@ModelAttribute Contact contact,
+                                @RequestParam("profileImage") MultipartFile file,
+                                Model m,
+                                HttpSession session,
+                                Principal principal) {
+
+        try {
+
+            Contact oldContact = this.contactRepository.findById(contact.getcId()).get();
+
+           
+            oldContact.setName(contact.getName());
+            oldContact.setSecondName(contact.getSecondName());
+            oldContact.setEmail(contact.getEmail());
+            oldContact.setPhone(contact.getPhone());
+            oldContact.setWork(contact.getWork());
+            oldContact.setDescription(contact.getDescription());
+
+            if (!file.isEmpty()) {
+                oldContact.setImage(file.getOriginalFilename());
+            }
+
+            User user = this.userRepository.getUserByEmail(principal.getName());
+            oldContact.setUser(user);
+
+            this.contactRepository.save(oldContact);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("ContactName " + contact.getName());
+        System.out.println("ContactId " + contact.getcId());
+
+        return "redirect:/user/show-contact";
+    }
+    
+    @GetMapping("/profile")
+    public String yourProfile() {
+    	return"normal/profile";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

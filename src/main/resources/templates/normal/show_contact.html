@@ -38,8 +38,14 @@
 					</td>
 				    <td th:text="${c.phone}"></td>
 				    <td>
-				    	<button class="btn btn-danger btn-sm">Delete</button>
-				    	<button class="btn btn-primary btn-sm">Update</button>
+				    	<a href="javascript:void(0)"
+						   th:onclick="'deleteContact(' + ${c.cId} + ')'"
+						   class="btn btn-danger btn-sm">
+						   Delete
+						 </a>
+				    	<form method="post" th:action="@{'/user/update-contact/' + ${c.cId}}" class="mt-2">
+						    <button type="submit" class="btn btn-primary btn-sm">Update</button>
+						</form>
 				    </td>
 				 </tr>
 			  </tbody>
@@ -49,7 +55,7 @@
 			
 			        <!-- Previous Button -->
 			        <li th:if="${currentPage != 0}" class="page-item">
-			            <a th:href="@{'/user/show-contact/' + ${currentPage-1}}" class="page-link">Previous</a>
+			            <a  th:href="@{'/user/show-contact/' + ${currentPage-1}}" class="page-link">Previous</a>
 			        </li>
 			
 			        <!-- Page Numbers -->
