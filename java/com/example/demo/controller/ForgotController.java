@@ -32,4 +32,6 @@ public class ForgotController {
 		
 		return"verify_otp";
 	}
+	
+	 
 }
