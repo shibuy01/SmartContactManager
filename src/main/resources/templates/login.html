@@ -8,8 +8,6 @@
 
 <body th:replace="~{base::layout(~{::section})}">
 
-<section>
-
 <section class="h-100 gradient-form" style="background-color: #eee;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -60,11 +58,17 @@
                     
                   </div>
 
-                  <div class="text-center pt-1 mb-5 pb-1">
+                  <div class="text-center pt-1 pb-1">
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log
                       in</button>
                       
-                    <a class=" btn btn-primary btn-block fa-lg gradient-custom-2 mb-3 text-muted " th:href="@{/signup}">Registor</a>
+                    <a class=" btn btn-primary btn-block fa-lg gradient-custom-2 mb-3  text-white" th:href="@{/signup}">Registor</a>
+                  </div>
+                  
+                  <div class="container text-center">
+                  	  	
+                  	  	<a class=" btn btn-primary btn-block fa-lg gradient-custom-2 mb-3  text-white" th:href="@{/forgot}">Forgot Password ?</a>
+                  	  	
                   </div>
 
                 </form>
@@ -82,11 +86,6 @@
       </div>
     </div>
   </div>
-</section>
-
-
-
-
 </section>
 
 </body>

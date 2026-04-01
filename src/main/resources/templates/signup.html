@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Signup Page</title>
+    <title>Sign up Page</title>
 </head>
 
 <body>
@@ -15,7 +15,7 @@
             <div class="col-md-8 offset-md-2">
                 <div class="my-card">
 
-                    <!-- ✅ Alert message -->
+                    <!--  Alert message -->
                     <div th:if="${session.message}" 
                          th:classappend="' ' + ${session.message.type}" 
                          class="alert" role="alert">
@@ -68,16 +68,17 @@
                                       th:field="*{about}"></textarea>
                         </div>
 
-                        <!-- Checkbox -->
+                        <!-- Check box -->
                         <div class="form-check mt-4">
                             <input type="checkbox" name="agreement" class="form-check-input"/>
                             <label>Accept terms and conditions</label>
                         </div>
-							<a class="text-muted" th:href="@{/signin}">Login</a>
+							
                         <!-- Buttons -->
                         <div class="mt-4">
                             <button type="submit" class="btn btn-primary w-100">Submit</button>
                             <button type="reset" class="btn btn-warning w-100 mt-2">Reset</button>
+                            <a class="btn btn-black w-100 mt-2" th:href="@{/signin}">Login</a>
                         </div>
 
                     </form>

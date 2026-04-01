@@ -6,14 +6,13 @@ import java.nio.file.Paths;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +33,9 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+	
+	@Autowired
+	private BCryptPasswordEncoder bcryptPasswordEncoder;
     
     @Autowired
     public UserRepository userRepository;
@@ -225,8 +227,42 @@ public class UserController {
     	return"normal/profile";
     }
     
+    @GetMapping("/settings")
+    public String openSettings() {
+    	return"normal/settings";
+    }
     
     
+    
+    @PostMapping("/change-password")
+    public String changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword, Principal principal, HttpSession session) {
+    	
+    	System.out.println("oldPassword"+ oldPassword);
+    	System.out.println("newPassword"+ newPassword);
+    	
+    	String userName = principal.getName();
+    	User currentUser = this.userRepository.getUserByEmail(userName);
+    	
+    	System.out.println(currentUser);
+    	
+    	
+    	if(this.bcryptPasswordEncoder.matches(oldPassword, currentUser.getPassword())) {
+    		//change password..
+    		
+    		currentUser.setPassword(this.bcryptPasswordEncoder.encode(newPassword));
+    		this.userRepository.save(currentUser);
+    		session.setAttribute("message", new Message("You Password is successfully changed...","alert-success"));
+    		
+    		
+    	} else {
+    		//error..
+    		
+    		session.setAttribute("message", new Message("Please Enter correct old Password !!","alert-error"));
+    		return"redirect:/user/settings";
+    	}
+    	
+    	return"normal/user_dashboard";
+    }
     
     
     

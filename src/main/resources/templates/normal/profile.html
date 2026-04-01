@@ -3,28 +3,67 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Profile</title>
+    <title>User Profile</title>
 </head>
 
 <body th:replace="~{normal/base::layout(~{::section})}">
 
 <section>
-    <div class="container text-center">
-    	<div class="card">
-    		<div class="card-body">
-    			<div class="container">
-    				<img  style="height:220px; width:200px;" class="profile_image" th:src="@{/image/profile.png/}"/>
-    			</div>
-    			
-    			<h2 class="text-center mt-3 text-secondary fst-italic font-weight-light">
-    				Start Adding your contact on cloud...
-    			</h2>
-    			
-    			<a th:href="@{/user/add-contact}" class="btn btn-primary mt-4 btn-block text-uppercase w-100">Add New Contact</a>
-    			
+    
+    <div class="card mr-3 ml-3">
+    	<div class="card-body">
+    	
+    		<div class="text-center">
+    			<img style="height:200px; width:200px;" 
+			     class="profile_image" 
+			     th:src="@{/image/profile.png}" 
+			     alt="profile">
     		</div>
+    		
+    		<div class="container text-center">
+    		
+				<h2 class="mt-3">
+				    <span th:text="${user.name}"></span>
+				</h2>    			
+    			<table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">#USERId</th>
+				      <th scope="col" th:text="${user.id}"></th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">Email</th>
+				      <td th:text="${user.email}"> </td>
+				    </tr>
+				    <tr>
+				      <th scope="row">Role</th>
+				      <td th:text="${user.role}"></td>
+				    </tr>
+				    <tr>
+				      <th scope="row">Account Active</th>
+				      <td >true</td>
+				    </tr>
+				     <tr>
+				      <th scope="row">About</th>
+				      <td  th:text="${user.about}"></td>
+				    </tr>
+				  </tbody>
+				</table>
+   
+    		</div>
+    		
     	</div>
     </div>
+    
+    <script> 
+	   $(document).ready(()=>{
+	    	$(".item").removeClass("active");
+	    	$("#profile-link").addClass("active");
+	   });
+   </script>
+    
 </section>
 
 </body>

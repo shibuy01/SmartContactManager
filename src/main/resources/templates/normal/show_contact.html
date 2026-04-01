@@ -13,6 +13,7 @@
    		<div class="card-body">
    			<h2 class="text-center">Your Contacts</h2>
    			
+   			<div class="table-responsive">
    			<table class="table">
 			  <thead>
 			    <tr>
@@ -50,6 +51,7 @@
 				 </tr>
 			  </tbody>
 			</table>
+			</div>
 			<nav aria-label="Page navigation example">
 			    <ul class="pagination">
 			
@@ -77,6 +79,14 @@
 			</nav>
    		</div>
    	</div>
+   	
+   	<script> 
+	   $(document).ready(()=>{
+	    	$(".item").removeClass("active");
+	    	$("#view-link").addClass("active");
+	   });
+   </script>
+   	
 </section>
 
 </body>
