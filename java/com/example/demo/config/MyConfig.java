@@ -42,7 +42,7 @@ public class MyConfig {
 
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/signin", "/signup", "/do_register", "/forgot", "/send-otp").permitAll()
+                .requestMatchers("/", "/signin", "/signup", "/do_register", "/forgot", "/send-otp","/verify-otp","/change-password").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
                 .requestMatchers("/admin/**").hasAuthority("ADMIN")
                 .requestMatchers("/user/**").hasAuthority("USER")
