@@ -76,13 +76,12 @@ public class UserController {
 
             if (!file.isEmpty()) {
 
-                // ✅ unique file name
+                //  unique file name
                 String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-
-                // ✅ correct path
+                
                 String uploadDir = "src/main/resources/static/image/";
 
-                // directory create (important)
+                
                 File dir = new File(uploadDir);
                 if (!dir.exists()) {
                     dir.mkdirs();
@@ -219,7 +218,7 @@ public class UserController {
         System.out.println("ContactName " + contact.getName());
         System.out.println("ContactId " + contact.getcId());
 
-        return "redirect:/user/show-contact";
+        return "redirect:/user/show-contact/0";
     }
     
     @GetMapping("/profile")
@@ -256,10 +255,7 @@ public class UserController {
     		
     		redirectAttributes.addFlashAttribute("message",
     	            new Message("Password changed successfully!", "success"));
-    		
-    		
-    		
-    		
+    	
     	} else {
     		//error..
     		

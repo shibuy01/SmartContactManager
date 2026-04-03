@@ -36,7 +36,7 @@
     </nav>
     
     
-    <!--  ✅SIDEBAR  -->
+    <!--Sidebar  -->
     
     <div class="sidebar">
     
@@ -58,7 +58,7 @@
     </div>
     
 
-    <!-- ✅ Dynamic Content -->
+    <!-- Dynamic Content -->
     <div class="content">
     
     	<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
@@ -66,17 +66,17 @@
     	
     	
     	<!-- Message box -->
-<div th:if="${session.message}" class="container">
-    
-    <div th:classappend="'alert-' + ${session.message.type}" 
-         class="alert text-center">
-        <span th:text="${session.message.content}"></span>
-    </div>
-
-    <!-- remove message from session -->
-    <th:block th:with="dummy=${#session.removeAttribute('message')}"></th:block>
-
-</div>
+		<div th:if="${session.message}" class="container">
+		    
+		    <div th:classappend="'alert-' + ${session.message.type}" 
+		         class="alert text-center">
+		        <span th:text="${session.message.content}"></span>
+		    </div>
+		
+		    <!-- remove message from session -->
+		    <th:block th:with="dummy=${#session.removeAttribute('message')}"></th:block>
+		
+		</div>
     
     
     
@@ -104,7 +104,6 @@
 		    }).then((result) => {
 		
 		        if (result.isConfirmed) {
-		            // 👉 yaha redirect hoga controller pe
 		            window.location.href = "/user/delete/" + cId;
 		        } else {
 		            Swal.fire("Cancelled", "Your contact is safe :)", "info");

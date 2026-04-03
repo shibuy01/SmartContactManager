@@ -20,14 +20,12 @@
 
             <h3 class="text-center mb-3">Add Contact</h3>
             
-            <!-- 🔥 MESSAGE SHOW -->
+            <!-- MESSAGE -->
             <div th:if="${message}" 
 			     th:class="'alert alert-' + ${message.type}">
 			    
 			    <span th:text="${message.content}"></span>
 			</div>
-
-            <!-- message remove -->
             
 
             <form th:action="@{/user/process-contact}" 

@@ -22,10 +22,9 @@ public class EmailService {
 
             helper.setTo(to);  
             helper.setSubject(subject);
-            helper.setText(body, true); // HTML
+            helper.setText(body, true); 
 
-            // ⚠️ IMPORTANT: same email as application.properties
-            helper.setFrom("shibuy0011@gmail.com");  
+            helper.setFrom("shibukumarkumar3@gmail.com");  
 
             javaMailSender.send(mimeMessage);
 

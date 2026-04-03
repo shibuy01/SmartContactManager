@@ -23,7 +23,6 @@ public class MyConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // 🔥 MOST IMPORTANT (Boot 4 fix)
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
 
@@ -34,7 +33,7 @@ public class MyConfig {
             .userDetailsService(userDetailsService)
             .passwordEncoder(passwordEncoder());
 
-        return builder.build(); // ✅ no .and()
+        return builder.build(); 
     }
 
     @Bean
