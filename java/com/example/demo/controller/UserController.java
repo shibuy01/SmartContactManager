@@ -228,14 +228,16 @@ public class UserController {
     }
     
     @GetMapping("/settings")
-    public String openSettings() {
+    public String openSettings(Model m, HttpSession session) {
+    	
+    	m.addAttribute("title","Settings - Smart Contact Manager");
     	return"normal/settings";
     }
     
     
     
     @PostMapping("/change-password")
-    public String changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword, Principal principal, HttpSession session) {
+    public String changePassword(@RequestParam("oldPassword") String oldPassword, @RequestParam("newPassword") String newPassword, Principal principal, HttpSession session,RedirectAttributes redirectAttributes) {
     	
     	System.out.println("oldPassword"+ oldPassword);
     	System.out.println("newPassword"+ newPassword);
@@ -251,21 +253,34 @@ public class UserController {
     		
     		currentUser.setPassword(this.bcryptPasswordEncoder.encode(newPassword));
     		this.userRepository.save(currentUser);
-    		session.setAttribute("message", new Message("You Password is successfully changed...","alert-success"));
+    		
+    		redirectAttributes.addFlashAttribute("message",
+    	            new Message("Password changed successfully!", "success"));
+    		
+    		
     		
     		
     	} else {
     		//error..
     		
-    		session.setAttribute("message", new Message("Please Enter correct old Password !!","alert-error"));
+    		redirectAttributes.addFlashAttribute("message",
+    	            new Message("Password changed successfully!", "success"));
+    		
     		return"redirect:/user/settings";
     	}
     	
-    	return"normal/user_dashboard";
+    	return"redirect:/user/settings";
     }
     
     
-    
+    @GetMapping("/login-fail")
+    public String loginFail(RedirectAttributes redirectAttributes) {
+
+        redirectAttributes.addFlashAttribute("message",
+                new Message("Invalid Username or Password", "danger"));
+
+        return "redirect:/signin";
+    }
     
     
     

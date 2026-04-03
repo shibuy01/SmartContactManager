@@ -15,9 +15,14 @@
             <div class="p-4 shadow" style="background-color: #e3f2fd; border-radius: 12px;">
             
                 <!--  Message box -->
-                <div th:if="${message}" class="alert alert-danger my-2 text-center">
-                    <span th:text="${message}"></span>
-                </div>
+                <div th:if="${message}" class="container">
+				
+				    <div th:classappend="'alert-' + ${message.type}" 
+				         class="alert text-center">
+				        <span th:text="${message.content}"></span>
+				    </div>
+				
+				</div>
 
                 <h4 class="text-center mb-4 fw-bold">Your Registered Email</h4>
                 

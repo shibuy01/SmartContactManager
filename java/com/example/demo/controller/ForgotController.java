@@ -9,9 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import com.example.demo.dao.UserRepository;
 import com.example.demo.entity.User;
+import com.example.demo.helper.Message;
 import com.example.demo.service.EmailService;
 
 import jakarta.servlet.http.HttpSession;
@@ -66,7 +69,7 @@ public class ForgotController {
 	
 	
 	@PostMapping("/verify-otp")
-	public String verifyotp(@RequestParam("otp") int otp, HttpSession session) {
+	public String verifyotp(@RequestParam("otp") int otp, HttpSession session, RedirectAttributes redirectAttributes) {
 		
 		int myotp = (int)session.getAttribute("myotp");
 		String email = (String)session.getAttribute("email");
@@ -77,8 +80,10 @@ public class ForgotController {
 			
 			if(user == null) {
 				//send error message
-				session.setAttribute("message", "User does not exits this email !!");
-				return"forgot_email_form";
+				redirectAttributes.addFlashAttribute("message",
+			            new Message("User does not exits this email !!", "danger"));
+				
+				return"redirect:/forgot";
 				
 			} else {
 				//send change password form
@@ -87,55 +92,42 @@ public class ForgotController {
 			 
 			
 		} else {
-			session.setAttribute("message", "You have entered wrong otp");
-			return"verify-otp";
+			
+			 redirectAttributes.addFlashAttribute("message", new
+					 	Message("You have entered wrong otp", "danger")); 
+			 return "redirect:/forgot";
+			
 		}
 	}
 	
-//	@PostMapping("/change-password")
-//	public String changePassword(@RequestParam("newpassword") String newpassword, HttpSession session) {
-//		
-//		System.out.println("newpassword"+newpassword);
-//		
-//		String email = (String)session.getAttribute("email");
-//		User user = this.userRepository.getUserByEmail(email);
-//		user.setPassword(this.bcryptPasswordEncoder.encode(newpassword));
-//		this.userRepository.save(user);
-//		
-//		
-//		
-//		return"redirect:/signin?change=password changed successfully..";
-//	}
-	
 	@PostMapping("/change-password")
 	public String changePassword(@RequestParam("newpassword") String newpassword,
-	                             HttpSession session) {
+	                             HttpSession session,
+	                             RedirectAttributes redirectAttributes) {
 
-	    System.out.println("newpassword: " + newpassword);
-
-	    // Session se email lo
 	    String email = (String) session.getAttribute("email");
 
 	    if (email == null) {
-	        session.setAttribute("message", "Session expired. Please try again.");
+	        redirectAttributes.addFlashAttribute("message",
+	                new Message("Session expired. Please try again.", "danger"));
 	        return "redirect:/forgot";
 	    }
 
-	    // User fetch karo
 	    User user = this.userRepository.getUserByEmail(email);
 
 	    if (user == null) {
-	        session.setAttribute("message", "User not found!");
+	        redirectAttributes.addFlashAttribute("message",
+	                new Message("User not found!", "danger"));
 	        return "redirect:/forgot";
 	    }
 
-	    // Password encode karke save karo
 	    user.setPassword(this.bcryptPasswordEncoder.encode(newpassword));
 	    this.userRepository.save(user);
 
-	    // Session clean karo (important)
 	    session.removeAttribute("email");
 
-	    return "redirect:/signin?change=Password changed successfully";
-	}
-}
+	    redirectAttributes.addFlashAttribute("message",
+	            new Message("Password changed successfully!", "success"));
+
+	    return "redirect:/signin";
+	}}

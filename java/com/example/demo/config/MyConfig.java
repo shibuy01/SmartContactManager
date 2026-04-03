@@ -50,15 +50,15 @@ public class MyConfig {
             )
 
             .formLogin(form -> form
-                .loginPage("/signin")
-                .loginProcessingUrl("/dologin") 
-                .defaultSuccessUrl("/user/index")
-                .failureUrl("/login-fail")
-            )
+            	    .loginPage("/signin")
+            	    .loginProcessingUrl("/dologin") 
+            	    .defaultSuccessUrl("/user/index")
+            	    .failureUrl("/signin?error=true")  
+            	)
 
             .logout(logout -> logout
             	    .logoutUrl("/logout")
-            	    .logoutSuccessUrl("/signin")
+            	    .logoutSuccessUrl("/signin?logout=true")
             	    .permitAll()
             	);
         return http.build();

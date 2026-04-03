@@ -18,10 +18,14 @@
                 	We have sent OTP to your email..
                 </div>
                 
-                                <!--  Message box -->
-                <div th:if="${message}" class="alert alert-danger my-2 text-center">
-                    <span th:text="${message}"></span>
-                </div>
+                <div th:if="${message}" class="container">
+				
+				    <div th:classappend="'alert-' + ${message.type}" 
+				         class="alert text-center">
+				        <span th:text="${message.content}"></span>
+				    </div>
+				
+				</div>
                 
                 
                 <form method="post" th:action="@{/verify-otp}">
