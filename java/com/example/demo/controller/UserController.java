@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -183,40 +184,91 @@ public class UserController {
     	return"normal/update_form";
     }
     
+	/*
+	 * @PostMapping("/process-update") public String updateHandler(@ModelAttribute
+	 * Contact contact,
+	 * 
+	 * @RequestParam("profileImage") MultipartFile file, Model m, HttpSession
+	 * session, Principal principal) {
+	 * 
+	 * try {
+	 * 
+	 * Contact oldContact = this.contactRepository.findById(contact.getcId()).get();
+	 * 
+	 * 
+	 * oldContact.setName(contact.getName());
+	 * oldContact.setSecondName(contact.getSecondName());
+	 * oldContact.setEmail(contact.getEmail());
+	 * oldContact.setPhone(contact.getPhone());
+	 * oldContact.setWork(contact.getWork());
+	 * oldContact.setDescription(contact.getDescription());
+	 * 
+	 * if (!file.isEmpty()) { oldContact.setImage(file.getOriginalFilename()); }
+	 * 
+	 * User user = this.userRepository.getUserByEmail(principal.getName());
+	 * oldContact.setUser(user);
+	 * 
+	 * this.contactRepository.save(oldContact);
+	 * 
+	 * } catch (Exception e) { e.printStackTrace(); }
+	 * 
+	 * System.out.println("ContactName " + contact.getName());
+	 * System.out.println("ContactId " + contact.getcId());
+	 * 
+	 * return "redirect:/user/show-contact/0"; }
+	 */
+    
     @PostMapping("/process-update")
     public String updateHandler(@ModelAttribute Contact contact,
                                 @RequestParam("profileImage") MultipartFile file,
-                                Model m,
-                                HttpSession session,
-                                Principal principal) {
+                                Principal principal,
+                                RedirectAttributes redirectAttributes) {
 
         try {
 
-            Contact oldContact = this.contactRepository.findById(contact.getcId()).get();
+            Optional<Contact> optional = contactRepository.findById(contact.getcId());
 
-           
-            oldContact.setName(contact.getName());
-            oldContact.setSecondName(contact.getSecondName());
-            oldContact.setEmail(contact.getEmail());
-            oldContact.setPhone(contact.getPhone());
-            oldContact.setWork(contact.getWork());
-            oldContact.setDescription(contact.getDescription());
+            if (optional.isPresent()) {
 
-            if (!file.isEmpty()) {
-                oldContact.setImage(file.getOriginalFilename());
+                Contact oldContact = optional.get();
+                User user = userRepository.getUserByEmail(principal.getName());
+
+                if (oldContact.getUser().getId() != user.getId()) {
+                    throw new Exception("Unauthorized");
+                }
+
+                oldContact.setName(contact.getName());
+                oldContact.setSecondName(contact.getSecondName());
+                oldContact.setEmail(contact.getEmail());
+                oldContact.setPhone(contact.getPhone());
+                oldContact.setWork(contact.getWork());
+                oldContact.setDescription(contact.getDescription());
+
+                if (!file.isEmpty()) {
+                    String uploadDir = new ClassPathResource("static/images").getFile().getAbsolutePath();
+
+                    String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
+                    Path path = Paths.get(uploadDir + File.separator + fileName);
+
+                    Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+
+                    oldContact.setImage(fileName);
+                }
+
+                oldContact.setUser(user);
+                contactRepository.save(oldContact);
+
+                // ✅ FLASH MESSAGE
+                redirectAttributes.addFlashAttribute("message",
+                        new Message("Contact updated successfully!", "success"));
             }
-
-            User user = this.userRepository.getUserByEmail(principal.getName());
-            oldContact.setUser(user);
-
-            this.contactRepository.save(oldContact);
 
         } catch (Exception e) {
             e.printStackTrace();
-        }
 
-        System.out.println("ContactName " + contact.getName());
-        System.out.println("ContactId " + contact.getcId());
+            redirectAttributes.addFlashAttribute("message",
+                    new Message("Something went wrong!", "danger"));
+        }
 
         return "redirect:/user/show-contact/0";
     }
@@ -260,12 +312,12 @@ public class UserController {
     		//error..
     		
     		redirectAttributes.addFlashAttribute("message",
-    	            new Message("Password changed successfully!", "success"));
+    	            new Message("Something went wrong!", "danger"));
     		
-    		return"redirect:/user/settings";
+    		return "redirect:/user/show-contact/0";
     	}
     	
-    	return"redirect:/user/settings";
+    	return "redirect:/user/show-contact/0";
     }
     
     

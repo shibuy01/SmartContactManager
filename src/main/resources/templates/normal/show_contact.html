@@ -9,8 +9,13 @@
 <body th:replace="~{normal/base::layout(~{::section})}">
 
 <section>
+<div th:if="${message}" class="alert" 
+						     th:classappend="'alert-' + ${message.type}">
+						    <span th:text="${message.content}"></span>
+						</div>
    	<div class="card mr-3 ml-3">
    		<div class="card-body">
+   		
    			<h2 class="text-center">Your Contacts</h2>
    			
    			<div class="table-responsive">

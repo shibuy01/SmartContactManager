@@ -8,9 +8,40 @@
 
 <body th:replace="~{base::layout(~{::section})}">
 
-<section>
-    <h2>This is About Section..</h2>
-    <h2>This page is write about page..</h2>
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Features</h2>
+
+    <div class="row">
+      
+      <div class="col-md-4">
+        <div class="card p-3 text-center">
+          <h5>Secure Login</h5>
+          <p>User authentication with strong security</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 text-center">
+          <h5>Easy Contact Management</h5>
+          <p>Add, update, delete contacts easily</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card p-3 text-center">
+          <h5>Responsive Design</h5>
+          <p>Works on mobile, tablet and desktop</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="py-5 text-center text-dark">
+  <h3>Start Managing Your Contacts Today</h3>
+  <a href="#" th:href="@{/user/index}" class="btn btn-primary mt-3">Get Started</a>
 </section>
 
 </body>

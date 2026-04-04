@@ -1,14 +1,15 @@
 @charset "UTF-8";
 
 body{
+	margin: 0;
+	padding: 0;
 	background:#e2e2e2e2;
-	width:100%;
 }
 
 .banner{
 	width:100%;
-	min-height:100vh;
-	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)),url(../image/background.jpg);
+	height:93vh;
+	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)),url('/images/background.jpg');
 	background-size:cover;
 	background-position:center;
 	background-repeat:no-repeat;
@@ -17,8 +18,8 @@ body{
 
 .register{
 	width:100%;
-	min-height:100vh;
-	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)),url(../image/registor.jpg);
+	min-height:93vh;
+	background:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)),url('/images/registor.jpg');
 	background-size:cover;
 	background-position:center;
 	background-repeat:no-repeat;
@@ -26,6 +27,7 @@ body{
 
 .my-card{
 	padding:20px;
+	margin:10px;
 	background: #FFFFFF;
 	opacity: 0.8;
 	background: linear-gradient(to right, #FFFFFF, #e3f2fd);
@@ -73,6 +75,7 @@ border-bottom-right-radius: .3rem;
 
 .sidebar{
 	position:absolute;
+	z-index:9999;
 	width:18%;
 	background:white;
 	height:100%;
