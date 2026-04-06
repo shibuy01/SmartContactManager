@@ -55,6 +55,8 @@ public class HomeController {
 	public String registerUser(@Valid  @ModelAttribute User user,BindingResult result ,
 	                           @RequestParam(defaultValue="false") boolean agreement,
 	                          RedirectAttributes redirectAttributes,Model m) {
+		
+		 m.addAttribute("title","Do Registor - Smart Contact Manager");
 
 	    try {
 	        if (!agreement) {

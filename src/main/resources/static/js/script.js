@@ -1,4 +1,3 @@
-console.log("hello gyis......");
 
 const toggleSidebar = ()=>{
 
