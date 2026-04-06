@@ -35,10 +35,11 @@ public class ForgotController {
 	@GetMapping("/forgot")
 	public String openForgotPage(Model model, HttpSession session) {
 
+		 model.addAttribute("title","Forgot - Smart Contact Manager");
 	    Object message = session.getAttribute("message");
 	    if (message != null) {
 	        model.addAttribute("message", message);
-	        session.removeAttribute("message"); // ✅ remove here
+	        session.removeAttribute("message");
 	    }
 
 	    return "forgot_email_form";
@@ -46,7 +47,9 @@ public class ForgotController {
 	
 	// send otp
 	@PostMapping("/send-otp")
-	public String sendOTP(@RequestParam("email") String email, HttpSession session) {
+	public String sendOTP(@RequestParam String email, HttpSession session, Model m) {
+		
+		 m.addAttribute("title","Send-OTP - Smart Contact Manager");
 
 	    Random random = new Random();
 	    int otp = 100000 + random.nextInt(900000);
@@ -62,15 +65,16 @@ public class ForgotController {
 	        session.setAttribute("email", email);
 	        return "verify-otp";
 	    } else {
-	        session.setAttribute("message", "❌ Invalid Email or Email not sent!");
+	        session.setAttribute("message", " Invalid Email or Email not sent!");
 	        return "redirect:/forgot";
 	    }
 	}
 	
 	
 	@PostMapping("/verify-otp")
-	public String verifyotp(@RequestParam("otp") int otp, HttpSession session, RedirectAttributes redirectAttributes) {
+	public String verifyotp(@RequestParam int otp, HttpSession session, RedirectAttributes redirectAttributes, Model m) {
 		
+		 m.addAttribute("title","Verify-OTP - Smart Contact Manager");
 		int myotp = (int)session.getAttribute("myotp");
 		String email = (String)session.getAttribute("email");
 		
@@ -101,9 +105,11 @@ public class ForgotController {
 	}
 	
 	@PostMapping("/change-password")
-	public String changePassword(@RequestParam("newpassword") String newpassword,
+	public String changePassword(@RequestParam String newpassword,
 	                             HttpSession session,
-	                             RedirectAttributes redirectAttributes) {
+	                             RedirectAttributes redirectAttributes, Model m) {
+		
+		 m.addAttribute("title","Changr-Password - Smart Contact Manager");
 
 	    String email = (String) session.getAttribute("email");
 

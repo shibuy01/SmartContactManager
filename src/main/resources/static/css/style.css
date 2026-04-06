@@ -57,7 +57,7 @@ border-bottom-right-radius: .3rem;
 }
 }
 
-@media  (max-width: 600px) {
+@media  (max-width: 640px) {
 
     .sidebar {
         display: none;
@@ -71,7 +71,18 @@ border-bottom-right-radius: .3rem;
     .content {
         margin-left: 0% !important;
     }
+    
+    
 }
+
+/* @media (min-width: 769px) {
+	.sidebar .crossbtn{
+    	display:none;
+    }
+    .barh{
+    	display:none;
+    }
+} */
 
 .sidebar{
 	position:absolute;
@@ -129,6 +140,7 @@ border-bottom-right-radius: .3rem;
 	right:35px;
 	font-size:36px;
 	cursor:pointer;
+	
 }
 
 /* Card Styling */

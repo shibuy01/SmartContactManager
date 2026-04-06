@@ -17,28 +17,38 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fw-bold">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Smart Contact Manager</a>
-
-            <div class="collapse navbar-collapse">
-                <div class="navbar-nav ms-auto">
-                    <a class="nav-link" th:href="@{/}"> Home</a>
-                    <a class="nav-link" ><span th:text="${user.name}"></span></a>
-                    <form th:action="@{/logout}" method="post">
-					    <button class="sidebar-btn">
-					        <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+     <nav class="navbar navbar-expand-lg navbar-light bg-light fw-bold ">
+		  <div class="container-fluid">
+		    <a class="navbar-brand " href="#">Smart Contact Manager</a>
+		    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		    <div class="collapse navbar-collapse" id="navbarNav">
+		      <ul class="navbar-nav ms-auto gap-3">
+		        <li class="nav-item">
+		          <a class="nav-link " aria-current="page"   href="#" th:href="@{/}">Home</a>
+		        </li>
+		        
+		        <li class="nav-item">
+		        	<a class="nav-link" ><span th:text="${user.name}"></span></a>
+		        </li>
+		        
+		        <li class="nav-item" >
+		          <form th:action="@{/logout}" method="post">
+					    <button class="sidebar-btn fw-bold active" aria-current="page">
+					        <i class="fa-solid fa-arrow-right-from-bracket " ></i> Logout
 					    </button>
 					</form>
-                </div>
-            </div>
-        </div>
-    </nav>
+		        </li>
+		      </ul>
+		    </div>
+		  </div>
+	</nav>
     
     
     <!--Sidebar  -->
     
-    <div class="sidebar">
+    <div class="sidebar ">
     
     	<span onclick="toggleSidebar()" class="crossbtn">&times;</span>
     
@@ -61,7 +71,9 @@
     <!-- Dynamic Content -->
     <div class="content">
     
-    	<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+    	<div class="barh">
+    		<i onclick="toggleSidebar()" class=" fas fa-bars m-3 "></i>
+    	</div>
     	
     	
     	

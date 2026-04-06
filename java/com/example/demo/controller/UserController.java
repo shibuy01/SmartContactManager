@@ -77,7 +77,7 @@ public class UserController {
 
             if (!file.isEmpty()) {
 
-                //  unique file name
+                
                 String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
                 
                 String uploadDir = "src/main/resources/static/image/";
@@ -184,39 +184,6 @@ public class UserController {
     	return"normal/update_form";
     }
     
-	/*
-	 * @PostMapping("/process-update") public String updateHandler(@ModelAttribute
-	 * Contact contact,
-	 * 
-	 * @RequestParam("profileImage") MultipartFile file, Model m, HttpSession
-	 * session, Principal principal) {
-	 * 
-	 * try {
-	 * 
-	 * Contact oldContact = this.contactRepository.findById(contact.getcId()).get();
-	 * 
-	 * 
-	 * oldContact.setName(contact.getName());
-	 * oldContact.setSecondName(contact.getSecondName());
-	 * oldContact.setEmail(contact.getEmail());
-	 * oldContact.setPhone(contact.getPhone());
-	 * oldContact.setWork(contact.getWork());
-	 * oldContact.setDescription(contact.getDescription());
-	 * 
-	 * if (!file.isEmpty()) { oldContact.setImage(file.getOriginalFilename()); }
-	 * 
-	 * User user = this.userRepository.getUserByEmail(principal.getName());
-	 * oldContact.setUser(user);
-	 * 
-	 * this.contactRepository.save(oldContact);
-	 * 
-	 * } catch (Exception e) { e.printStackTrace(); }
-	 * 
-	 * System.out.println("ContactName " + contact.getName());
-	 * System.out.println("ContactId " + contact.getcId());
-	 * 
-	 * return "redirect:/user/show-contact/0"; }
-	 */
     
     @PostMapping("/process-update")
     public String updateHandler(@ModelAttribute Contact contact,
@@ -258,7 +225,6 @@ public class UserController {
                 oldContact.setUser(user);
                 contactRepository.save(oldContact);
 
-                // ✅ FLASH MESSAGE
                 redirectAttributes.addFlashAttribute("message",
                         new Message("Contact updated successfully!", "success"));
             }

@@ -71,7 +71,7 @@ public class HomeController {
 
 	        user.setRole("USER");
 	        user.setEnabled(true);
-	        user.setImageUrl("../image/profile.png");
+	        user.setImageUrl("../images/profile.png");
 	        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
 	        this.userRepository.save(user);
