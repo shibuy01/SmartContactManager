@@ -102,44 +102,6 @@ public class HomeController {
 	    }
 	}
 	
-	
-	/*
-	 * @PostMapping("/do_register") public String
-	 * registerUser(@Valid @ModelAttribute User user,BindingResult result ,
-	 * 
-	 * @RequestParam(defaultValue="false") boolean agreement, RedirectAttributes
-	 * redirectAttributes,Model m) {
-	 * 
-	 * m.addAttribute("title","Do Registor - Smart Contact Manager");
-	 * 
-	 * try { if (!agreement) { redirectAttributes.addFlashAttribute("message", new
-	 * Message("You have not agreed the terms and condition", "alert-danger"));
-	 * return "redirect:/signup"; }
-	 * 
-	 * if(result.hasErrors()) { System.out.println("ERROR"+ result.toString());
-	 * m.addAttribute("user",user); return"signup"; }
-	 * 
-	 * user.setRole("USER"); user.setEnabled(true);
-	 * user.setImageUrl("../images/profile.png");
-	 * user.setPassword(passwordEncoder.encode(user.getPassword()));
-	 * 
-	 * this.userRepository.save(user);
-	 * 
-	 * redirectAttributes.addFlashAttribute("message", new
-	 * Message("Successfully Registered", "alert-success"));
-	 * 
-	 * 
-	 * 
-	 * return "redirect:/signup";
-	 * 
-	 * } catch (Exception e) { e.printStackTrace();
-	 * 
-	 * redirectAttributes.addFlashAttribute("message", new
-	 * Message("Something went wrong !! " + e.getMessage(), "alert-danger"));
-	 * 
-	 * return "redirect:/signup"; } }
-	 */
-	
 	@GetMapping("/signin")
 	public String login(Model m) {
 		m.addAttribute("title","Login - Smart Contact Manager");
