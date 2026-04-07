@@ -1,93 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      th:replace="base::layout(~{::section})">
+	th:replace="base::layout(~{::section})">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Sign up Page</title>
+<meta charset="UTF-8">
+<title>Sign up Page</title>
 </head>
 
 <body>
 
-<section class="register">
-    <div class="container pt-3 col-md-8">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <div class="my-card">
+	<section class="register">
+		<div class="container pt-3 col-md-8">
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<div class="my-card">
 
-                    <!--message box -->
-                    <div th:if="${session.message}" 
-                         th:classappend="' ' + ${session.message.type}" 
-                         class="alert" role="alert">
-                        <p class="text-center" th:text="${session.message.content}"></p>
+						<!-- Flash message -->
+<div th:if="${message}" th:class="'alert ' + ${message.type}" role="alert">
+    <p class="text-center" th:text="${message.content}"></p>
+</div>
 
-                        <!-- remove after show -->
-                        <th:block th:remove="tag"
-                                  th:with="${#session.removeAttribute('message')}">
-                        </th:block>
-                    </div>
+						<h3 class="text-center fw-bold">Register Here !!</h3>
 
-                    <h3 class="text-center fw-bold">Register Here !!</h3>
+						<form th:action="@{/do_register}" method="post"
+							th:object="${user}">
 
-                    <form th:action="@{/do_register}" method="post" th:object="${user}">
-                        
-                        <!-- Name -->
-                        <div class="form-group mt-4">
-                            <input type="text" 
-                                   class="form-control" 
-                                   placeholder="Enter Name..." 
-                                   th:field="*{name}"
-                                   th:classappend="${#fields.hasErrors('name')} ? ' is-invalid' : ''" />
-                            
-                            <div class="invalid-feedback"
-                                 th:each="e : ${#fields.errors('name')}"
-                                 th:text="${e}">
-                            </div>
-                        </div>
+							<!-- Name -->
+							<div class="form-group mt-4">
+								<input type="text" class="form-control"
+									placeholder="Enter Name..." th:field="*{name}"
+									th:classappend="${#fields.hasErrors('name')} ? ' is-invalid' : ''" />
 
-                        <!-- Email -->
-                        <div class="form-group mt-4">
-                            <input type="email" 
-                                   class="form-control" 
-                                   placeholder="Enter Email..." 
-                                   th:field="*{email}" />
-                        </div>
+								<div class="invalid-feedback"
+									th:each="e : ${#fields.errors('name')}" th:text="${e}"></div>
+							</div>
 
-                        <!-- Password -->
-                        <div class="form-group mt-4">
-                            <input type="password" 
-                                   class="form-control" 
-                                   placeholder="Enter Password..." 
-                                   th:field="*{password}" />
-                        </div>
+							<!-- Email -->
+							<div class="form-group mt-4">
+								<input type="email" class="form-control"
+									placeholder="Enter Email..." th:field="*{email}" />
+							</div>
 
-                        <!-- About -->
-                        <div class="mt-4">
-                            <textarea class="form-control"
-                                      placeholder="Enter something..."
-                                      th:field="*{about}"></textarea>
-                        </div>
+							<!-- Password -->
+							<div class="form-group mt-4">
+								<input type="password" class="form-control"
+									placeholder="Enter Password..." th:field="*{password}" />
+							</div>
 
-                        <!-- Check box -->
-                        <div class="form-check mt-4">
-                            <input type="checkbox" name="agreement" class="form-check-input"/>
-                            <label>Accept terms and conditions</label>
-                        </div>
-							
-                        <!-- Buttons -->
-                        <div class="mt-4">
-                            <button type="submit" class="btn btn-primary w-100">Submit</button>
-                            <button type="reset" class="btn btn-warning w-100 mt-2">Reset</button>
-                            <a class="btn btn-primary w-100 mt-2" th:href="@{/signin}">Login</a>
-                        </div>
+							<!-- About -->
+							<div class="mt-4">
+								<textarea class="form-control" placeholder="Enter something..."
+									th:field="*{about}"></textarea>
+							</div>
 
-                    </form>
+							<!-- Check box -->
+							<div class="form-check mt-4">
+								<input type="checkbox" name="agreement" class="form-check-input" />
+								<label>Accept terms and conditions</label>
+							</div>
 
-                </div>
-            </div>
-        </div> 
-    </div>
-</section>
+							<!-- Buttons -->
+							<div class="mt-4">
+								<button type="submit" class="btn btn-primary w-100">Submit</button>
+								<button type="reset" class="btn btn-warning w-100 mt-2">Reset</button>
+								<a class="btn btn-primary w-100 mt-2" th:href="@{/signin}">Login</a>
+							</div>
+
+						</form>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
 </body>
+
 </html>

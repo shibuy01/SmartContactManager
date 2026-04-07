@@ -2,38 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <title>User Dashboard</title>
+<meta charset="UTF-8">
+<title>User Dashboard</title>
 </head>
 
 <body th:replace="~{normal/base::layout(~{::section})}">
 
-<section>
-       <div class="container text-center">
-    	<div class="card">
-    		<div class="card-body">
-    			<div class="container">
-    				<img  style="height:220px; width:200px;" class="profile_image" th:src="@{/image/profile.png/}"/>
-    			</div>
-    			
-    			<h2 class="text-center mt-3 text-secondary fst-italic font-weight-light">
-    				Start Adding your contact on cloud...
-    			</h2>
-    			
-    			<a th:href="@{/user/add-contact}" class="btn btn-primary mt-4 btn-block text-uppercase w-100">Add New Contact</a>
-    			
-    		</div>
-    	</div>
-    </div>
-    
-   <script> 
-	   $(document).ready(()=>{
-	    	$(".item").removeClass("active");
-	    	$("#home-link").addClass("active");
-	   });
-   </script>
-    
-</section>
+	<section>
+		<div class="container text-center">
+			<div class="card">
+				<div class="card-body">
+					<div class="container">
+						<img style="height: 220px; width: 200px;" class="profile_image"
+							th:src="@{/image/profile.png/}" />
+					</div>
+
+					<h2
+						class="text-center mt-3 text-secondary fst-italic font-weight-light">
+						Start Adding your contact on cloud...</h2>
+
+					<a th:href="@{/user/add-contact}"
+						class="btn btn-primary mt-4 btn-block text-uppercase w-100">Add
+						New Contact</a>
+
+				</div>
+			</div>
+		</div>
+
+		<script>
+			$(document).ready(() => {
+				$(".item").removeClass("active");
+				$("#home-link").addClass("active");
+			});
+		</script>
+
+	</section>
 
 </body>
+
 </html>
