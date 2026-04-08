@@ -1,3 +1,6 @@
-COPY docker-entrypoint.sh .
-RUN chmod +x docker-entrypoint.sh
-ENTRYPOINT ["./docker-entrypoint.sh"]
+#!/bin/sh
+# Entrypoint script for Spring Boot app
+# Ensure app.jar is run inside container
+
+echo "Starting SmartContactManager..."
+exec java -jar app.jar
