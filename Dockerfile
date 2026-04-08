@@ -3,7 +3,7 @@ FROM maven:3.9.6-eclipse-temurin-17 AS build
 
 WORKDIR /app
 
-# Copy POM and download dependencies
+# Copy POM and download dependencies offline
 COPY pom.xml .
 RUN mvn dependency:go-offline
 
@@ -19,9 +19,13 @@ WORKDIR /app
 # Copy built jar from build stage
 COPY --from=build /app/target/*.jar app.jar
 
-# Railway provides PORT env variable automatically
+# Copy entrypoint script
+COPY docker-entrypoint.sh .
+RUN chmod +x docker-entrypoint.sh
+
+# Railway automatically provides PORT env variable
 ENV PORT=8080
 EXPOSE 8080
 
-# Run Spring Boot app
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Run Spring Boot app via entrypoint
+ENTRYPOINT ["./docker-entrypoint.sh"]
