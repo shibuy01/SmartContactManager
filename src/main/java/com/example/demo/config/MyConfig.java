@@ -51,7 +51,7 @@ public class MyConfig {
             .formLogin(form -> form
             	    .loginPage("/signin")
             	    .loginProcessingUrl("/dologin") 
-            	    .defaultSuccessUrl("/user/index")
+            	    .defaultSuccessUrl("/user/index", true)
             	    .failureUrl("/signin?error=true")  
             	)
 
