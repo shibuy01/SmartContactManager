@@ -18,6 +18,10 @@
 
 ---
 
+# 📇 Smart Contact Manager
+
+---
+
 ## 📌 Overview
 
 **Smart Contact Manager** is a secure web-based contact management application developed using **Java and Spring Boot**.
@@ -27,6 +31,14 @@ The application allows users to securely manage their personal contacts through 
 The project follows the **MVC architecture** and uses **Spring Data JPA / Hibernate** for database persistence.
 
 The application also includes validation, email functionality, Thymeleaf-based server-side rendering and Docker support.
+
+---
+
+# 🚀 Live Demo
+
+🔗 **Live Application:** https://smartcontactmanager-ok52.onrender.com
+
+> 🌐 The Smart Contact Manager application is deployed on **Render**.
 
 ---
 
@@ -153,6 +165,7 @@ The application also includes validation, email functionality, Thymeleaf-based s
 | Frontend         | HTML, CSS, Bootstrap, Thymeleaf |
 | Build Tool       | Maven                           |
 | Containerization | Docker                          |
+| Deployment       | Render                          |
 | Version Control  | Git / GitHub                    |
 | IDE              | IntelliJ IDEA                   |
 | API Testing      | Postman                         |
@@ -185,43 +198,43 @@ Spring Security and Thymeleaf Spring Security integration are included in the pr
 
 ## 🏠 Home Page
 
-![Smart Contact Manager Home](./screenshots/home-page.png)
+[Smart Contact Manager Home](https://chatgpt.com/c/screenshots/home-page.png)
 
 ---
 
 ## 🔐 Login Page
 
-![Login Page](./screenshots/login-page.png)
+[Login Page](https://chatgpt.com/c/screenshots/login-page.png)
 
 ---
 
 ## 📝 Registration Page
 
-![Registration Page](./screenshots/register-page.png)
+[Registration Page](https://chatgpt.com/c/screenshots/register-page.png)
 
 ---
 
 ## 📇 Contact Dashboard
 
-![Contact Dashboard](./screenshots/contact-dashboard.png)
+[Contact Dashboard](https://chatgpt.com/c/screenshots/contact-dashboard.png)
 
 ---
 
 ## ➕ Add Contact
 
-![Add Contact](./screenshots/add-contact.png)
+[Add Contact](https://chatgpt.com/c/screenshots/add-contact.png)
 
 ---
 
 ## 🔎 Search Contact
 
-![Search Contact](./screenshots/search-contact.png)
+[Search Contact](https://chatgpt.com/c/screenshots/search-contact.png)
 
 ---
 
 ## 👤 Contact Details
 
-![Contact Details](./screenshots/contact-details.png)
+[Contact Details](https://chatgpt.com/c/screenshots/contact-details.png)
 
 ---
 
@@ -428,14 +441,13 @@ Important application areas to test:
 
 # ☁️ Deployment
 
-The project is Docker-ready and can be deployed to cloud platforms supporting Docker and Java applications.
+The application is deployed on **Render** using Docker.
 
-Possible deployment platforms:
+### 🚀 Production Deployment
 
-* AWS EC2
-* Render
-* Railway
-* Other Docker-compatible cloud platforms
+**Platform:** Render
+
+**Live URL:** https://smartcontactmanager-ok52.onrender.com
 
 ### Production Architecture
 
@@ -444,8 +456,8 @@ Possible deployment platforms:
                         │
                         ▼
                 ┌───────────────┐
-                │  Cloud Server │
-                │   AWS / Cloud │
+                │    Render     │
+                │ Cloud Platform│
                 └───────┬───────┘
                         │
                         ▼
@@ -499,7 +511,7 @@ This project demonstrates practical knowledge of:
 * Docker
 * Maven
 * Git & GitHub
-* Cloud deployment concepts
+* Cloud deployment
 
 ---
 
@@ -573,6 +585,8 @@ MySQL
 Thymeleaf
    ↓
 Docker
+   ↓
+Render
 ```
 
 This makes it a strong portfolio project for:
@@ -631,6 +645,7 @@ CI/CD
 # 🔗 Repository
 
 **GitHub:**
+
 https://github.com/shibuy01/SmartContactManager
 
 ---
@@ -638,9 +653,3 @@ https://github.com/shibuy01/SmartContactManager
 # ⭐ Support
 
 If you find this project useful, please consider giving the repository a ⭐ on GitHub.
-
----
-
-<p align="center">
-  Built with ❤️ using Java, Spring Boot, Spring Security, Hibernate, MySQL and Thymeleaf
-</p>
