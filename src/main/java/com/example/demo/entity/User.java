@@ -18,8 +18,8 @@ import jakarta.validation.constraints.Size;
 public class User {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 	
 	@NotBlank(message="Name field is required !!")
 	@Size(min=2, max=15, message="min 2 and max 15 charactor are allowed !!")
