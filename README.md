@@ -1,263 +1,215 @@
 # 📇 Smart Contact Manager
 
 <p align="center">
-  <strong>A Secure Contact Management Web Application built with Spring Boot, Spring Security, Hibernate and MySQL</strong>
+  <strong>A Secure Contact Management Web Application built with Java, Spring Boot, Spring Security, Hibernate, and MySQL.</strong>
 </p>
 
 <p align="center">
   <a href="https://github.com/shibuy01/SmartContactManager">
-    <img src="https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github" alt="GitHub"/>
+    <img src="https://img.shields.io/badge/GitHub-Repository-black?style=for-the-badge&logo=github" alt="GitHub Repository"/>
   </a>
-  <img src="https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=openjdk" />
-  <img src="https://img.shields.io/badge/Spring%20Boot-4.0.4-brightgreen?style=for-the-badge&logo=springboot" />
-  <img src="https://img.shields.io/badge/Spring%20Security-6.x-green?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Hibernate-JPA-blue?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql" />
-  <img src="https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker" />
+  <img src="https://img.shields.io/badge/Java-17-orange?style=for-the-badge&logo=openjdk" alt="Java 17"/>
+  <img src="https://img.shields.io/badge/Spring%20Boot-4.0.4-brightgreen?style=for-the-badge&logo=springboot" alt="Spring Boot"/>
+  <img src="https://img.shields.io/badge/Spring%20Security-Authentication-green?style=for-the-badge" alt="Spring Security"/>
+  <img src="https://img.shields.io/badge/Hibernate-JPA-blue?style=for-the-badge" alt="Hibernate JPA"/>
+  <img src="https://img.shields.io/badge/MySQL-Database-4479A1?style=for-the-badge&logo=mysql" alt="MySQL"/>
+  <img src="https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker" alt="Docker"/>
 </p>
-
----
-
-# 📇 Smart Contact Manager
 
 ---
 
 ## 📌 Overview
 
-**Smart Contact Manager** is a secure web-based contact management application developed using **Java and Spring Boot**.
+**Smart Contact Manager** is a web-based contact management application developed using Java and Spring Boot.
 
-The application allows users to securely manage their personal contacts through a clean web interface. It provides functionality for adding, viewing, updating, deleting and searching contacts while protecting user access using **Spring Security**.
+It allows users to manage their personal contacts through a web interface, with features for creating, viewing, updating, deleting, and searching contacts.
 
-The project follows the **MVC architecture** and uses **Spring Data JPA / Hibernate** for database persistence.
+The application follows the **Model-View-Controller (MVC) architecture** and uses Spring Security for authentication, Spring Data JPA and Hibernate for database operations, and Thymeleaf for server-side rendering.
 
-The application also includes validation, email functionality, Thymeleaf-based server-side rendering and Docker support.
+The project also includes form validation, email integration, and Docker-based deployment support.
+
+## 🚀 Live Demo
+
+**Live Application:** [Smart Contact Manager](https://smartcontactmanager-ok52.onrender.com)
+
+**GitHub Repository:** [SmartContactManager](https://github.com/shibuy01/SmartContactManager)
+
+> Note: The live application may take some time to respond if the hosting service has put it to sleep.
 
 ---
 
-# 🚀 Live Demo
-
-🔗 **Live Application:** https://smartcontactmanager-ok52.onrender.com
-
-> 🌐 The Smart Contact Manager application is deployed on **Render**.
-
----
-
-# ✨ Features
+## ✨ Features
 
 ### 👤 User Management
-
-* User registration
-* User login
-* Secure authentication
-* User-specific contact management
-* Profile management
-* Form validation
+- User registration and login
+- Authentication using Spring Security
+- Form validation
+- User profile management
+- User-specific contact management
 
 ### 📇 Contact Management
-
-* Add new contacts
-* View contacts
-* Update contacts
-* Delete contacts
-* Search contacts
-* Contact details management
-* User-specific contact data
+- Add new contacts
+- View contact details
+- Update existing contacts
+- Delete contacts
+- Search contacts
+- Manage personal contact information
 
 ### 🔐 Security
+- Spring Security integration
+- Protected application routes
+- Authentication and authorization
+- Password protection
+- User-specific access control
 
-* Spring Security authentication
-* Secure login
-* Role-based access support
-* Protected application routes
-* User authorization
-* Password security
-
-### 🔎 Search
-
-* Search contacts efficiently
-* Search by contact information
-* User-specific search results
-
-### 📧 Email
-
-* Spring Boot Mail integration
-* Email-based functionality
-* SMTP configuration support
+### 📧 Email Integration
+- Spring Boot Mail integration
+- SMTP configuration support
+- Email-related application functionality
 
 ### 🎨 User Interface
-
-* Thymeleaf templates
-* HTML
-* CSS
-* Bootstrap
-* Responsive design
-* Server-side rendered pages
+- Thymeleaf template engine
+- HTML and CSS
+- Bootstrap styling
+- Server-side rendered pages
+- Responsive user interface
 
 ### 🐳 Docker
-
-* Dockerized Spring Boot application
-* Multi-stage Docker build
-* Maven-based Docker build
-* Production-ready container structure
+- Dockerized Spring Boot application
+- Multi-stage Docker build
+- Maven-based application build
+- Containerized application deployment
 
 ---
 
-# 🏗️ Application Architecture
+## 🏗️ Application Architecture
 
 ```text
-                         ┌──────────────────────┐
-                         │        USER          │
-                         │      Web Browser     │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │     Thymeleaf UI     │
-                         │    HTML / Bootstrap  │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │   Spring MVC Layer   │
-                         │     Controllers      │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │    Service Layer     │
-                         │   Business Logic     │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │ Repository Layer     │
-                         │ Spring Data JPA      │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │    MySQL Database    │
-                         └──────────────────────┘
+              User / Web Browser
+                      |
+                      v
+              Thymeleaf Templates
+                      |
+                      v
+                Spring MVC
+                 Controllers
+                      |
+                      v
+                 Service Layer
+                Business Logic
+                      |
+                      v
+               Repository Layer
+               Spring Data JPA
+                      |
+                      v
+                Hibernate ORM
+                      |
+                      v
+                MySQL Database
 
-
-                         ┌──────────────────────┐
-                         │   Spring Security    │
-                         │ Authentication/Auth  │
-                         └──────────────────────┘
+        Spring Security protects
+        authentication and access
+        to secured application routes.
 ```
 
----
+### Architecture Explanation
 
-# 🛠️ Tech Stack
-
-| Category         | Technologies                    |
-| ---------------- | ------------------------------- |
-| Language         | Java 17                         |
-| Framework        | Spring Boot 4.0.4               |
-| Web              | Spring MVC                      |
-| Security         | Spring Security                 |
-| ORM              | Hibernate / JPA                 |
-| Template Engine  | Thymeleaf                       |
-| Validation       | Spring Boot Validation          |
-| Database         | MySQL                           |
-| Database Support | PostgreSQL                      |
-| Email            | Spring Boot Mail                |
-| Frontend         | HTML, CSS, Bootstrap, Thymeleaf |
-| Build Tool       | Maven                           |
-| Containerization | Docker                          |
-| Deployment       | Render                          |
-| Version Control  | Git / GitHub                    |
-| IDE              | IntelliJ IDEA                   |
-| API Testing      | Postman                         |
-
-The repository's Maven configuration currently defines Spring Boot 4.0.4 with Java 17 and dependencies including JPA, Security, Thymeleaf, Validation, Mail and MySQL/PostgreSQL drivers.
+1. **Presentation Layer:** Thymeleaf, HTML, CSS, and Bootstrap render the user interface.
+2. **Controller Layer:** Spring MVC controllers handle incoming web requests.
+3. **Service Layer:** Contains application business logic.
+4. **Repository Layer:** Spring Data JPA handles database access.
+5. **Persistence Layer:** Hibernate maps Java entities to database tables.
+6. **Security Layer:** Spring Security handles authentication and authorization.
 
 ---
 
-# 🔐 Security
+## 🛠️ Tech Stack
 
-The application uses **Spring Security** for authentication and authorization.
-
-Security features include:
-
-* User authentication
-* Protected routes
-* Secure login
-* Authorization
-* Role-based access
-* User-specific data access
-* Password protection
-
-Spring Security and Thymeleaf Spring Security integration are included in the project's Maven dependencies.
-
----
-
-# 📸 Screenshots
-
-> Add your actual screenshots inside the `screenshots` folder.
-
-## 🏠 Home Page
-
-[Smart Contact Manager Home](https://chatgpt.com/c/screenshots/home-page.png)
+| Category | Technologies |
+|---|---|
+| Programming Language | Java 17 |
+| Backend Framework | Spring Boot 4.0.4 |
+| Web Framework | Spring MVC |
+| Security | Spring Security |
+| ORM | Hibernate / JPA |
+| Template Engine | Thymeleaf |
+| Validation | Spring Boot Validation |
+| Database | MySQL |
+| Email | Spring Boot Mail |
+| Frontend | HTML, CSS, Bootstrap |
+| Build Tool | Maven |
+| Containerization | Docker |
+| Deployment | Render |
+| Version Control | Git, GitHub |
+| IDE | IntelliJ IDEA |
+| API Testing | Postman |
 
 ---
 
-## 🔐 Login Page
+## 🔐 Security Implementation
 
-[Login Page](https://chatgpt.com/c/screenshots/login-page.png)
+Spring Security is used to protect application resources and manage user authentication.
 
----
+The security implementation includes the following areas:
 
-## 📝 Registration Page
+- Authentication and login
+- Access control for protected routes
+- Authorization of application resources
+- Password security
+- Integration with Thymeleaf
 
-[Registration Page](https://chatgpt.com/c/screenshots/register-page.png)
-
----
-
-## 📇 Contact Dashboard
-
-[Contact Dashboard](https://chatgpt.com/c/screenshots/contact-dashboard.png)
+The exact authorization rules and password-encoding implementation depend on the application's security configuration.
 
 ---
 
-## ➕ Add Contact
+## 📸 Screenshots
 
-[Add Contact](https://chatgpt.com/c/screenshots/add-contact.png)
+Add actual application screenshots to the `screenshots` directory in the repository.
+
+### 🏠 Home Page
+
+![Smart Contact Manager Home Page](screenshots/home-page.png)
+
+### 🔐 Login Page
+
+![Login Page](screenshots/login-page.png)
+
+### 📝 Registration Page
+
+![Registration Page](screenshots/register-page.png)
+
+### 📇 Contact Dashboard
+
+![Contact Dashboard](screenshots/contact-dashboard.png)
+
+### ➕ Add Contact
+
+![Add Contact](screenshots/add-contact.png)
+
+### 🔎 Search Contacts
+
+![Search Contacts](screenshots/search-contact.png)
+
+> Replace these image paths with the actual screenshot filenames if they differ. The images must be uploaded to GitHub for them to display.
 
 ---
 
-## 🔎 Search Contact
-
-[Search Contact](https://chatgpt.com/c/screenshots/search-contact.png)
-
----
-
-## 👤 Contact Details
-
-[Contact Details](https://chatgpt.com/c/screenshots/contact-details.png)
-
----
-
-# 📁 Project Structure
+## 📁 Project Structure
 
 ```text
 SmartContactManager/
-│
 ├── src/
 │   ├── main/
 │   │   ├── java/
 │   │   │   └── com/example/demo/
-│   │   │
 │   │   └── resources/
 │   │       ├── static/
 │   │       ├── templates/
 │   │       └── application.properties
-│   │
 │   └── test/
-│
 ├── .mvn/
 │   └── wrapper/
-│
 ├── Dockerfile
 ├── pom.xml
 ├── mvnw
@@ -266,67 +218,61 @@ SmartContactManager/
 └── README.md
 ```
 
----
-
-# 🚀 Getting Started
-
-## Prerequisites
-
-Make sure you have installed:
-
-* Java 17+
-* Maven
-* MySQL
-* Git
-* Docker
-* IntelliJ IDEA / Eclipse / STS
+> This is a simplified structure. Update the package and directory names to match the actual repository.
 
 ---
 
-# 📥 Clone Repository
+## 🚀 Getting Started
+
+### Prerequisites
+
+Install the following tools before running the project:
+
+- Java 17 or a compatible version
+- Maven, if you are not using the Maven Wrapper
+- MySQL
+- Git
+- Docker, if you want to run the container
+- IntelliJ IDEA, Eclipse, or Spring Tool Suite
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/shibuy01/SmartContactManager.git
-```
-
-Go inside the project:
-
-```bash
 cd SmartContactManager
 ```
 
----
+### 2. Create the Database
 
-# 🗄️ Database Configuration
-
-Create a MySQL database:
+Open MySQL and execute:
 
 ```sql
 CREATE DATABASE smartcontactmanager;
 ```
 
-Configure your database credentials in:
+### 3. Configure Database Credentials
+
+Open:
 
 ```text
 src/main/resources/application.properties
 ```
 
-Example:
+Configure the database connection according to your local MySQL setup:
 
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/smartcontactmanager
-spring.datasource.username=root
-spring.datasource.password=your_password
+spring.datasource.username=${DB_USERNAME:root}
+spring.datasource.password=${DB_PASSWORD:your_password}
 
 spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
 ```
 
-> ⚠️ Do not commit real database passwords to GitHub.
+Make sure the MySQL server is running and the database credentials are correct.
 
----
+> **Security:** Never commit real database passwords, email credentials, or other secrets to GitHub. Configure them using environment variables or a secure secret-management mechanism.
 
-# ▶️ Run the Application
+### 4. Run the Application
 
 Using Maven:
 
@@ -334,322 +280,237 @@ Using Maven:
 mvn spring-boot:run
 ```
 
-Or on Windows:
+Or use the Maven Wrapper on Windows PowerShell:
 
-```bash
+```powershell
 .\mvnw.cmd spring-boot:run
 ```
 
-The application will normally be available at:
+On Linux or macOS:
 
-```text
-http://localhost:8080
+```bash
+./mvnw spring-boot:run
 ```
+
+Once the application starts successfully, open:
+
+http://localhost:8080
+
+> The application may require additional email or database configuration depending on the settings in your project.
 
 ---
 
-# 🐳 Docker
+## 🐳 Docker
 
-The repository contains a multi-stage Dockerfile that builds the application using Maven and then runs the generated Spring Boot JAR using Eclipse Temurin Java 17.
+The repository includes a Dockerfile for building and running the Spring Boot application.
 
-### Build Docker Image
+### Build the Docker Image
 
 ```bash
 docker build -t smart-contact-manager .
 ```
 
-### Run Container
+### Run the Container
 
 ```bash
-docker run -p 8080:8080 smart-contact-manager
+docker run --rm -p 8080:8080 smart-contact-manager
 ```
 
-Application:
+Open the application:
 
-```text
 http://localhost:8080
-```
+
+> If the application requires MySQL or SMTP configuration, pass the necessary environment variables and ensure the container can reach those services. The Docker command above assumes the application can start with its existing configuration.
 
 ---
 
-# 🔄 Application Flow
+## 🔄 Application Flow
 
 ```text
 User
- │
- ▼
-Login / Register
- │
- ▼
+ |
+ v
+Registration / Login
+ |
+ v
 Spring Security
- │
- ▼
+ |
+ v
 Authenticated User
- │
- ▼
+ |
+ v
 Contact Dashboard
- │
- ├── Add Contact
- │
- ├── View Contact
- │
- ├── Update Contact
- │
- ├── Delete Contact
- │
- └── Search Contact
- │
- ▼
-Spring MVC
- │
- ▼
+ |
+ +---- Add Contact
+ |
+ +---- View Contact
+ |
+ +---- Update Contact
+ |
+ +---- Delete Contact
+ |
+ +---- Search Contacts
+ |
+ v
+Spring MVC Controller
+ |
+ v
 Service Layer
- │
- ▼
+ |
+ v
 Spring Data JPA / Hibernate
- │
- ▼
-MySQL
+ |
+ v
+MySQL Database
 ```
 
 ---
 
-# 🧪 Testing
+## 🧪 Testing
 
-The application can be tested through:
+The following areas should be tested before releasing changes:
 
-* Browser
-* Postman
-* Spring Boot tests
+- User registration
+- User login
+- Authentication and authorization
+- Adding contacts
+- Viewing contacts
+- Updating contacts
+- Deleting contacts
+- Searching contacts
+- Form validation
+- User-specific data access
 
-Important application areas to test:
+Use the browser and Postman where applicable. Automated test coverage depends on the tests implemented in the repository.
+
+---
+
+## ☁️ Deployment
+
+The application is deployed on Render.
+
+- **Platform:** Render
+- **Live URL:** [Smart Contact Manager](https://smartcontactmanager-ok52.onrender.com)
+- **Containerization:** Docker
+
+### Deployment Architecture
 
 ```text
-✓ User Registration
-✓ User Login
-✓ Authentication
-✓ Add Contact
-✓ View Contact
-✓ Update Contact
-✓ Delete Contact
-✓ Search Contact
-✓ Validation
-✓ Authorization
+             Internet
+                |
+                v
+          Render Platform
+                |
+                v
+        Docker Container
+                |
+                v
+        Spring Boot App
+                |
+                v
+          MySQL Database
 ```
 
----
-
-# ☁️ Deployment
-
-The application is deployed on **Render** using Docker.
-
-### 🚀 Production Deployment
-
-**Platform:** Render
-
-**Live URL:** https://smartcontactmanager-ok52.onrender.com
-
-### Production Architecture
-
-```text
-                     Internet
-                        │
-                        ▼
-                ┌───────────────┐
-                │    Render     │
-                │ Cloud Platform│
-                └───────┬───────┘
-                        │
-                        ▼
-                ┌───────────────┐
-                │    Docker     │
-                │ Spring Boot   │
-                └───────┬───────┘
-                        │
-                        ▼
-                ┌───────────────┐
-                │     MySQL     │
-                │    Database   │
-                └───────────────┘
-```
+> Ensure the deployed application has a reachable database and the required environment variables configured. The diagram represents the intended deployment flow; the actual database hosting should match your Render configuration.
 
 ---
 
-# 🔒 Production Security Recommendations
+## 🔒 Production Security Recommendations
 
-For production deployment:
+For a production deployment:
 
-* Store database credentials in environment variables.
-* Never commit passwords or API credentials.
-* Use HTTPS.
-* Configure secure cookies.
-* Use strong password hashing.
-* Configure CORS carefully.
-* Use production database credentials.
-* Keep Spring Boot and dependencies updated.
-* Use environment-specific configuration.
-
----
-
-# 💡 Key Learning Outcomes
-
-This project demonstrates practical knowledge of:
-
-* Java backend development
-* Spring Boot
-* Spring MVC
-* Spring Security
-* Authentication & Authorization
-* Hibernate / JPA
-* MySQL
-* Server-side rendering
-* Thymeleaf
-* Form validation
-* CRUD operations
-* MVC architecture
-* Email integration
-* Docker
-* Maven
-* Git & GitHub
-* Cloud deployment
+- Store database and email credentials in environment variables.
+- Never expose passwords or API keys in source code.
+- Use HTTPS.
+- Configure secure session cookies where applicable.
+- Use a suitable password encoder.
+- Restrict access to protected resources.
+- Configure CSRF protection appropriately for the authentication model.
+- Keep Spring Boot and dependencies updated.
+- Use separate development and production configurations.
+- Configure database backups and monitoring.
 
 ---
 
-# 🔮 Future Improvements
+## 💡 Key Learning Outcomes
 
-### 🔐 Authentication
+This project provides practical experience with:
 
-* JWT-based authentication
-* OAuth2 / Google Login
-* Refresh tokens
-* Advanced RBAC
-
-### 📇 Contact Management
-
-* Contact groups
-* Contact tags
-* Profile images
-* Import/export contacts
-* Bulk contact operations
-
-### 📧 Communication
-
-* Email contact directly
-* Email notifications
-* Password reset
-* Email verification
-
-### 🔎 Advanced Search
-
-* Filter by category
-* Search by multiple fields
-* Pagination
-* Sorting
-
-### 📊 Dashboard
-
-* Contact statistics
-* Recent contacts
-* User activity
-* Analytics dashboard
-
-### ☁️ DevOps
-
-* AWS EC2 deployment
-* CI/CD pipeline
-* GitHub Actions
-* Docker Compose
-* Production monitoring
+- Java backend development
+- Spring Boot and Spring MVC
+- Spring Security
+- Authentication and authorization
+- Hibernate and Spring Data JPA
+- MySQL database integration
+- MVC architecture
+- Thymeleaf server-side rendering
+- Form validation and CRUD operations
+- Email integration
+- Maven build management
+- Docker containerization
+- Git and GitHub
+- Cloud deployment
 
 ---
 
-# 🎯 Why This Project?
+## 🔮 Future Improvements
 
-**Smart Contact Manager** demonstrates how a real-world Java web application can be developed using the Spring ecosystem.
+Potential enhancements include:
 
-The project covers:
+### Authentication and Security
+- JWT-based authentication
+- OAuth2 / Google Login
+- Email verification
+- Password reset workflow
+- Advanced role-based access control
 
-```text
-Java
-   ↓
-Spring Boot
-   ↓
-Spring MVC
-   ↓
-Spring Security
-   ↓
-Hibernate / JPA
-   ↓
-MySQL
-   ↓
-Thymeleaf
-   ↓
-Docker
-   ↓
-Render
-```
+### Contact Management
+- Contact groups and tags
+- Profile images
+- Import and export functionality
+- Bulk contact operations
+- Pagination and sorting
 
-This makes it a strong portfolio project for:
+### User Experience
+- Advanced search and filtering
+- Dashboard statistics
+- Recent contacts
+- Improved mobile responsiveness
 
-**Java Developer | Java Backend Developer | Spring Boot Developer | Software Engineer**
-
----
-
-# 👨‍💻 Author
-
-## Shibu Kumar
-
-**Java Backend Developer | Spring Boot Developer**
-
-### Technical Skills
-
-```text
-Java
-SQL
-JavaScript
-
-Spring Boot
-Spring MVC
-Spring Security
-REST API Development
-Hibernate / JPA
-JWT Authentication
-Microservices
-
-React.js
-HTML
-CSS
-Bootstrap
-
-MySQL
-PostgreSQL
-
-Git
-GitHub
-Maven
-Docker
-IntelliJ IDEA
-Postman
-Swagger
-
-Apache Kafka
-Redis
-Spring AI
-Google Gemini
-AWS EC2
-CI/CD
-```
+### DevOps
+- GitHub Actions CI/CD
+- Docker Compose
+- AWS EC2 deployment
+- Production monitoring and logging
 
 ---
 
-# 🔗 Repository
+## 🎯 Why This Project?
 
-**GitHub:**
+Smart Contact Manager demonstrates the development of a Java web application using the Spring ecosystem.
 
-https://github.com/shibuy01/SmartContactManager
+It brings together server-side web development, database persistence, authentication, contact CRUD operations, and containerization in a single project.
+
+**Suitable portfolio project for:**
+- Java Developer
+- Java Backend Developer
+- Spring Boot Developer
+- Junior Software Engineer
 
 ---
 
-# ⭐ Support
+## 👨‍💻 Author
+
+### Shibu Kumar
+
+**Java Backend Developer | Spring Boot | REST APIs | Microservices**
+
+- **GitHub:** [github.com/shibuy01](https://github.com/shibuy01)
+- **Project Repository:** [SmartContactManager](https://github.com/shibuy01/SmartContactManager)
+- **Live Demo:** [Smart Contact Manager](https://smartcontactmanager-ok52.onrender.com)
+
+---
+
+## ⭐ Support
 
 If you find this project useful, please consider giving the repository a ⭐ on GitHub.
