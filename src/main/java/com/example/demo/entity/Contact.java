@@ -10,8 +10,8 @@ import jakarta.persistence.ManyToOne;
 public class Contact {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int cId;
+	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long cId;
 	private String name;
 	private String secondName;
 	private String work;
