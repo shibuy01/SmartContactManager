@@ -23,7 +23,7 @@ public class Contact {
 	@ManyToOne
 	private User user;
 	
-	public int getcId() {
+	public Long getcId() {
 		return cId;
 	}
 	
