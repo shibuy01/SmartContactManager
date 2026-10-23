@@ -1,4 +1,3 @@
-```java
 package com.example.demo.entity;
 
 import java.util.ArrayList;
@@ -144,4 +143,3 @@ public class User {
                 '}';
     }
 }
-```
